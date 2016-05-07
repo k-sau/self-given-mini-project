@@ -2,11 +2,19 @@ document.addEventListener('DOMContentLoaded', function(){
   var checkPageButton = document.getElementById('fetch');
   checkPageButton.addEventListener('click', function(){
 
+    chrome.browserAction.setBadgeText({text: ""});
+
     var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (xhttp.readyState == 4 && xhttp.status == 200) {
       var response = xhttp.responseText;
       var obj = JSON.parse(response);
+
+      // Storing first report id from response for comparison
+      chrome.storage.local.set({
+        'firstReportId': obj.reports[0].id
+      });
+
       for(var i=0; i<25; i++){
 
         // List tag

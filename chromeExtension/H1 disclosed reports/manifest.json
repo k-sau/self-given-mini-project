@@ -3,11 +3,16 @@
 
   "name": "HackerOne Disclosed Reports | UnOfficial",
   "description": "Fetches last 25 disclosed reports...",
-  "version": "1.0",
+  "version": "2.0",
+
 
   "browser_action": {
     "default_icon": "icon.png",
     "default_popup": "popup.html"
   },
-  "permissions": [ "activeTab", "https://hackerone.com/" ]
+  "permissions": [ "activeTab", "https://hackerone.com/hacktivity", "notifications", "storage" ],
+
+  "background": {
+    "page": "background/background.html"
+  }
 }
