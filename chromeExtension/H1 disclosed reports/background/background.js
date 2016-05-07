@@ -1,22 +1,29 @@
 document.addEventListener('DOMContentLoaded', function(){
 
+    // setInterval function to check for new reports every 30 mins
     window.setInterval(function updateBadge(){
         var newxhttp = new XMLHttpRequest();
         newxhttp.onreadystatechange = function() {
           if (newxhttp.readyState == 4 && newxhttp.status == 200) {
 
+             newResponse = newxhttp.responseText;
+             newObj = JSON.parse(newResponse);
 
+            // Reading stored id (popup.js:17)
             chrome.storage.local.get('firstReportId', function (savedId) {
+
               if(typeof savedId.firstReportId == "undefined"){
                   chrome.browserAction.setBadgeText({
                   text: "25+"
                 });
               }
               else if(newObj.reports[0].id != savedId.firstReportId ){
+                // "count" counts no. of new disclosed reports
                 var count = 0;
                 while(newObj.reports[count].id != savedId.firstReportId){
                   count++;
                 }
+                // Shows notification
                 chrome.browserAction.setBadgeText({
                   text: count.toString()
                 });
@@ -24,9 +31,6 @@ document.addEventListener('DOMContentLoaded', function(){
             });
 
 
-         // Action to be performed when the document is read;
-            newResponse = newxhttp.responseText;
-            newObj = JSON.parse(newResponse);
 
        }
      };

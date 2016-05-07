@@ -2,19 +2,23 @@ document.addEventListener('DOMContentLoaded', function(){
   var checkPageButton = document.getElementById('fetch');
   checkPageButton.addEventListener('click', function(){
 
+    // Remove notification
     chrome.browserAction.setBadgeText({text: ""});
 
     var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
+    xhttp.onreadystatechange = function() {
     if (xhttp.readyState == 4 && xhttp.status == 200) {
       var response = xhttp.responseText;
+
+      // Parse JSON response
       var obj = JSON.parse(response);
 
-      // Storing first report id from response for comparison
+      // Storing first report id from response for comparison to show notification
       chrome.storage.local.set({
         'firstReportId': obj.reports[0].id
       });
 
+      // Loop to show last 25 reports
       for(var i=0; i<25; i++){
 
         // List tag
@@ -79,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function(){
         reporter.text = obj.reports[i].reporter.username;
         li.appendChild(reporter);
 
-        // Adding all elements/attributes under list tag
+        // Adding all elements under list tag
         document.getElementById("reportList").appendChild(li);
 
       }
