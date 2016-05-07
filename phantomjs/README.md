@@ -1,0 +1,3 @@
+# Bing.js
+
+Changes ubuntu / Linux Mint wallpaper with Bing's image of the day...
