@@ -22,6 +22,9 @@ document.addEventListener('DOMContentLoaded', function(){
                 var count = 0;
                 while(newObj.reports[count].id != savedId.firstReportId){
                   count++;
+                  if(count > 24){
+                    break;
+                  }
                 }
                 // Shows notification
                 chrome.browserAction.setBadgeText({
