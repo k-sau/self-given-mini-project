@@ -41,6 +41,6 @@ document.addEventListener('DOMContentLoaded', function(){
     };
   newxhttp.open("GET", "https://hackerone.com/hacktivity?page=1&filter=public", true);
   newxhttp.send();
-}, 1000 * (60*10)); //1800000
+}, 1800000);
 
 },false);
