@@ -3,7 +3,7 @@
 
   "name": "HackerOne Disclosed Reports | UnOfficial",
   "description": "Fetches last 25 disclosed reports...",
-  "version": "2.2",
+  "version": "2.3",
 
 
   "browser_action": {
