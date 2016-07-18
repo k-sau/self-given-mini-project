@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function(){
        });
      }
     };
-  newxhttp.open("GET", "https://hackerone.com/hacktivity/new?page=1&filter=public", true);
+  newxhttp.open("GET", "https://hackerone.com/hacktivity/new?page=1&filter=type%3Apublic", true);
   newxhttp.send();
 }, 1800000);
 
