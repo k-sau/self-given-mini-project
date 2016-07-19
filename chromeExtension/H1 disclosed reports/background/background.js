@@ -40,6 +40,8 @@ document.addEventListener('DOMContentLoaded', function(){
      }
     };
   newxhttp.open("GET", "https://hackerone.com/hacktivity/new?page=1&filter=type%3Apublic", true);
+  newxhttp.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+  newxhttp.setRequestHeader("Accept", "application/json, text/javascript, */*; q=0.01");
   newxhttp.send();
 }, 1800000);
 
